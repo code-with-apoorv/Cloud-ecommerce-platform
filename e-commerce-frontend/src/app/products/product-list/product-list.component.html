@@ -1,128 +1,156 @@
 <div class="container py-4">
-  <!-- <h2 class="mb-4">🛍️ All Products</h2> -->
 
-   <!-- 🧭 Category Tabs -->
-<div class="mb-4 overflow-auto pb-2">
-  <div class="nav nav-pills gap-2 flex-nowrap">
-    <button
-      class="btn btn-sm"
-      [ngClass]="{
-        'btn-primary': selectedCategoryId === null,
-        'btn-outline-primary': selectedCategoryId !== null
-      }"
-      (click)="filterByCategory(null)"
-    >
-      All Products
-    </button>
-
-    <button
-      class="btn btn-sm"
-      *ngFor="let cat of categories"
-      [ngClass]="{
-        'btn-primary': selectedCategoryId === cat.categoryId,
-        'btn-outline-primary': selectedCategoryId !== cat.categoryId
-      }"
-      (click)="filterByCategory(cat.categoryId)"
-    >
-      {{ cat.categoryName }}
-    </button>
+  <!-- 🌟 Promotional Hero Banner -->
+  <div class="p-4 p-md-5 mb-5 rounded-4 text-white position-relative overflow-hidden shadow-sm" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4f46e5 100%);">
+    <div class="position-relative z-1" style="max-width: 650px;">
+      <span class="badge bg-white text-primary fw-bold text-uppercase px-3 py-1.5 rounded-pill mb-3 shadow-sm">
+        <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Spring Mega Sale
+      </span>
+      <h1 class="display-6 fw-extrabold text-white mb-2">Explore Premium Tech & Lifestyle Essentials</h1>
+      <p class="text-white-50 mb-4">Discover verified products with cloud-fast checkout, end-to-end order tracking, and instant delivery.</p>
+      <div class="d-flex gap-2">
+        <button class="btn btn-light fw-bold text-primary rounded-pill px-4 shadow-sm" (click)="filterByCategory(null)">
+          Shop All Deals
+        </button>
+      </div>
+    </div>
   </div>
-</div>
 
+  <!-- 🧭 Category Navigation & Page Controls -->
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
+    
+    <!-- Category Pills -->
+    <div class="overflow-auto pb-1">
+      <div class="nav nav-pills gap-2 flex-nowrap">
+        <button
+          class="btn btn-sm rounded-pill px-3 py-2 fw-semibold"
+          [ngClass]="{
+            'btn-primary shadow-sm': selectedCategoryId === null,
+            'btn-outline-secondary bg-white text-dark': selectedCategoryId !== null
+          }"
+          (click)="filterByCategory(null)"
+        >
+          <i class="bi bi-grid-fill me-1"></i> All Products
+        </button>
 
-  <!-- 🔽 Page Size Selector -->
-<div class="d-flex justify-content-end align-items-center mb-3">
-  <label for="pageSizeSelect" class="form-label me-2 mb-0 fw-semibold">Show:</label>
-  <select
-    id="pageSizeSelect"
-    class="form-select form-select-sm w-auto"
-    [(ngModel)]="size"
-    (change)="onPageSizeChange()"
-  >
-    <option *ngFor="let s of pageSizeOptions" [value]="s">{{ s }}</option>
-  </select>
-  <span class="ms-2">per page</span>
-</div>
+        <button
+          class="btn btn-sm rounded-pill px-3 py-2 fw-semibold"
+          *ngFor="let cat of categories"
+          [ngClass]="{
+            'btn-primary shadow-sm': selectedCategoryId === cat.categoryId,
+            'btn-outline-secondary bg-white text-dark': selectedCategoryId !== cat.categoryId
+          }"
+          (click)="filterByCategory(cat.categoryId)"
+        >
+          {{ cat.categoryName }}
+        </button>
+      </div>
+    </div>
 
+    <!-- Page Size Selector -->
+    <div class="d-flex align-items-center justify-content-end shrink-0">
+      <label for="pageSizeSelect" class="form-label me-2 mb-0 small text-muted fw-semibold">Show:</label>
+      <select
+        id="pageSizeSelect"
+        class="form-select form-select-sm rounded-pill w-auto px-3 bg-white shadow-sm"
+        [(ngModel)]="size"
+        (change)="onPageSizeChange()"
+      >
+        <option *ngFor="let s of pageSizeOptions" [value]="s">{{ s }} items</option>
+      </select>
+    </div>
+
+  </div>
 
   <!-- 🔄 Loading Spinner -->
-  <div *ngIf="loading" class="text-center my-5">
-    <div class="spinner-border text-primary" role="status"></div>
-    <p class="mt-2">Loading products...</p>
+  <div *ngIf="loading" class="text-center my-5 py-5">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    <p class="mt-3 text-muted fw-medium">Loading catalog items...</p>
   </div>
 
   <!-- ❌ Error Alert -->
-  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="error" class="alert alert-danger rounded-3 shadow-sm">{{ error }}</div>
 
-  <!-- 🧺 Product Cards -->
-  <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="!loading && products.length > 0">
-    <!-- <div class="col" *ngFor="let product of products">
-      <div class="card h-100 shadow-sm border-0">
-
-        <img [src]="product.productImage || 'https://via.placeholder.com/300'" 
-        [alt]="product.productName"
-        loading="lazy"
-        class="card-img-top product-image" />   
-
-        <div class="card-body">
-          <h5 class="card-title">{{ product.productName }}</h5>
-          <p class="card-text text-muted" style="min-height: 60px">{{ product.description }}</p>
-        </div>
-        <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
-          <span class="fw-bold text-success fs-6">₹{{ product.specialPrice || product.price }}</span>
-          <button class="btn btn-sm btn-outline-primary" (click)="addToCart(product.productId)">
-            <i class="bi bi-cart-plus"></i> Add
-          </button>
-        </div>
-      </div>
-    </div> -->
+  <!-- 🧺 Modern Product Cards Grid -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4" *ngIf="!loading && products.length > 0">
     <div class="col" *ngFor="let product of products">
-      <div class="card h-100 shadow-sm border-0 position-relative">
-    
-        <!-- ❤️ Wishlist Icon -->
-        <button class="btn btn-sm position-absolute top-0 end-0 m-2 text-danger bg-white rounded-circle shadow"
-                (click)="addToWishlist(product.productId)">
-          <i class="bi bi-heart"></i>
+      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative product-card bg-white">
+        
+        <!-- Discount Tag -->
+        <span *ngIf="product.discount" class="position-absolute top-0 start-0 m-3 badge bg-danger text-white rounded-pill px-2.5 py-1 fw-bold shadow-sm z-2">
+          {{ product.discount }}% OFF
+        </span>
+
+        <!-- ❤️ Wishlist Floating Button -->
+        <button class="btn btn-sm position-absolute top-0 end-0 m-3 text-danger bg-white rounded-circle shadow-sm z-2 wishlist-btn"
+                (click)="addToWishlist(product.productId)"
+                title="Add to Wishlist">
+          <i class="bi bi-heart-fill"></i>
         </button>
     
-        <!-- 📸 Product Image -->
-        <img [src]="product.productImage || 'https://via.placeholder.com/300'" 
-             [alt]="product.productName"
-             loading="lazy"
-             class="card-img-top product-image" />
-    
-        <div class="card-body">
-          <h5 class="card-title">{{ product.productName }}</h5>
-          <p class="card-text text-muted" style="min-height: 60px">{{ product.description }}</p>
+        <!-- 📸 Product Image Wrapper -->
+        <div class="product-image-container bg-light d-flex align-items-center justify-content-center p-3 overflow-hidden">
+          <img [src]="product.productImage || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60'" 
+               [alt]="product.productName"
+               loading="lazy"
+               class="product-image img-fluid" />
         </div>
     
-        <!-- 💰 Price & Actions -->
-        <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center flex-wrap gap-2">
-          <span class="fw-bold text-success fs-6">₹{{ product.specialPrice || product.price }}</span>
-          <div class="d-flex gap-1">
-            <button class="btn btn-sm btn-outline-primary" (click)="addToCart(product.productId)">
-              <i class="bi bi-cart-plus"></i> Add
-            </button>
-            <button class="btn btn-sm btn-primary" (click)="buyNow(product.productId)">
-              <i class="bi bi-lightning-fill"></i> Buy Now
-            </button>
+        <div class="card-body p-4 d-flex flex-col justify-content-between">
+          <div>
+            <div class="d-flex align-items-center gap-1 text-warning small mb-2">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+              <span class="text-muted ms-1 small fw-semibold">4.8 (120+)</span>
+            </div>
+            <h5 class="card-title fw-bold text-dark mb-1">{{ product.productName }}</h5>
+            <p class="card-text text-muted small line-clamp-2" style="min-height: 40px">{{ product.description }}</p>
+          </div>
+    
+          <!-- 💰 Price & Actions -->
+          <div class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+              <span class="fw-extrabold text-dark fs-5">₹{{ product.specialPrice || product.price }}</span>
+              <span *ngIf="product.specialPrice && product.price > product.specialPrice" class="text-muted text-decoration-line-through small ms-1">
+                ₹{{ product.price }}
+              </span>
+            </div>
+
+            <div class="d-flex gap-1.5">
+              <button class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1.5 fw-semibold" (click)="addToCart(product.productId)">
+                <i class="bi bi-cart-plus me-1"></i> Add
+              </button>
+              <button class="btn btn-sm btn-primary rounded-pill px-3 py-1.5 fw-semibold" (click)="buyNow(product.productId)">
+                <i class="bi bi-lightning-fill me-1"></i> Buy
+              </button>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
-    
   </div>
 
-  <!-- ℹ️ No Products -->
-  <div *ngIf="!loading && products.length === 0" class="alert alert-info text-center mt-4">
-    No products found.
+  <!-- ℹ️ No Products Empty State -->
+  <div *ngIf="!loading && products.length === 0" class="text-center py-5 my-4 bg-white rounded-4 shadow-sm border p-5">
+    <div class="d-inline-flex p-3 rounded-circle bg-light text-muted mb-3">
+      <i class="bi bi-box-seam fs-1"></i>
+    </div>
+    <h4 class="fw-bold text-dark">No Products Found</h4>
+    <p class="text-muted small">Try switching category tabs or clearing your search filter.</p>
+    <button class="btn btn-outline-primary rounded-pill px-4 mt-2" (click)="filterByCategory(null)">View All Products</button>
   </div>
 
-  <!-- 📄 Pagination -->
-  <nav *ngIf="totalPages > 1 && !loading" class="mt-4">
-    <ul class="pagination justify-content-center">
+  <!-- 📄 Modern Pagination -->
+  <nav *ngIf="totalPages > 1 && !loading" class="mt-5">
+    <ul class="pagination justify-content-center gap-1">
       <li class="page-item" [class.disabled]="page === 0">
-        <button class="page-link" (click)="goToPage(page - 1)">Previous</button>
+        <button class="page-link rounded-pill px-3" (click)="goToPage(page - 1)">
+          <i class="bi bi-chevron-left me-1"></i> Previous
+        </button>
       </li>
 
       <li
@@ -130,11 +158,13 @@
         *ngFor="let p of [].constructor(totalPages); let i = index"
         [class.active]="i === page"
       >
-        <button class="page-link" (click)="goToPage(i)">{{ i + 1 }}</button>
+        <button class="page-link rounded-circle mx-1" style="width: 38px; height: 38px;" (click)="goToPage(i)">{{ i + 1 }}</button>
       </li>
 
       <li class="page-item" [class.disabled]="page === totalPages - 1">
-        <button class="page-link" (click)="goToPage(page + 1)">Next</button>
+        <button class="page-link rounded-pill px-3" (click)="goToPage(page + 1)">
+          Next <i class="bi bi-chevron-right ms-1"></i>
+        </button>
       </li>
     </ul>
   </nav>
