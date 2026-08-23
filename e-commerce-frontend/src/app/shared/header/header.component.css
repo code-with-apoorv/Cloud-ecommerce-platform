@@ -1,31 +1,68 @@
-.navbar {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
+.amazon-header {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1050;
 }
 
-.navbar-brand span {
-  background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.amazon-nav-top {
+  background-color: #131921;
 }
 
-.dropdown-menu {
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  padding: 0.5rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+.amazon-nav-bottom {
+  background-color: #232f3e;
 }
 
-.dropdown-item {
+.header-box {
+  border: 1px solid transparent;
+  transition: border-color 0.15s ease;
+  cursor: pointer;
+}
+
+.header-box:hover {
+  border-color: #ffffff;
+}
+
+.amazon-logo:hover {
+  outline: 1px solid #ffffff;
+}
+
+.amazon-search-container {
+  max-width: 800px;
+}
+
+.amazon-search-input {
+  height: 40px;
+  font-size: 0.95rem;
+}
+
+.amazon-search-input:focus {
+  box-shadow: 0 0 0 3px #ff9900 !important;
+}
+
+.amazon-search-btn {
+  background-color: #febd69;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  transition: background-color 0.2s ease;
+}
+
+.amazon-search-btn:hover {
+  background-color: #f3a847;
+}
+
+.sub-link {
+  padding: 5px 8px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.sub-link:hover {
+  border-color: #ffffff;
+}
+
+.dropdown-menu-dark {
+  background-color: #232f3e;
+  border: 1px solid #37475a;
   border-radius: 8px;
-  padding: 0.5rem 1rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
 }
-
-.dropdown-item:hover {
-  background-color: #f1f5f9;
-  transform: translateX(2px);
-}
+

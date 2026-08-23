@@ -1,44 +1,44 @@
-<div class="container py-4">
+<div class="container-fluid px-3 px-lg-5 py-3">
 
-  <!-- 🌟 Promotional Hero Banner -->
-  <div class="p-4 p-md-5 mb-5 rounded-4 text-white position-relative overflow-hidden shadow-sm" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4f46e5 100%);">
-    <div class="position-relative z-1" style="max-width: 650px;">
-      <span class="badge bg-white text-primary fw-bold text-uppercase px-3 py-1.5 rounded-pill mb-3 shadow-sm">
-        <i class="bi bi-lightning-charge-fill text-warning me-1"></i> Spring Mega Sale
+  <!-- 🌟 AMAZON PROMOTIONAL HERO BANNER -->
+  <div class="amazon-hero-banner p-4 p-md-5 mb-4 rounded-3 position-relative overflow-hidden text-white">
+    <div class="position-relative z-1" style="max-width: 700px;">
+      <span class="badge bg-warning text-dark fw-bold px-3 py-1 mb-2 rounded-1">
+        <i class="bi bi-lightning-fill text-danger me-1"></i> GREAT INDIAN FESTIVAL DEALS
       </span>
-      <h1 class="display-6 fw-extrabold text-white mb-2">Explore Premium Tech & Lifestyle Essentials</h1>
-      <p class="text-white-50 mb-4">Discover verified products with cloud-fast checkout, end-to-end order tracking, and instant delivery.</p>
+      <h1 class="display-6 fw-extrabold text-white mb-2">Blockbuster Tech Deals & Up to 65% Off</h1>
+      <p class="text-light mb-3">Shop verified top brand laptops, audio, smartphones, and accessories with free Prime one-day delivery.</p>
       <div class="d-flex gap-2">
-        <button class="btn btn-light fw-bold text-primary rounded-pill px-4 shadow-sm" (click)="filterByCategory(null)">
-          Shop All Deals
+        <button class="btn btn-amazon-yellow px-4 py-2" (click)="filterByCategory(null)">
+          Explore All Deals
         </button>
       </div>
     </div>
   </div>
 
-  <!-- 🧭 Category Navigation & Page Controls -->
-  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4 pb-3 border-bottom">
+  <!-- 🧭 Category Filter Bar & Quick Stats -->
+  <div class="bg-white p-3 rounded-2 shadow-sm mb-4 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
     
     <!-- Category Pills -->
     <div class="overflow-auto pb-1">
       <div class="nav nav-pills gap-2 flex-nowrap">
         <button
-          class="btn btn-sm rounded-pill px-3 py-2 fw-semibold"
+          class="btn btn-sm rounded-1 px-3 py-1.5 fw-semibold"
           [ngClass]="{
-            'btn-primary shadow-sm': selectedCategoryId === null,
-            'btn-outline-secondary bg-white text-dark': selectedCategoryId !== null
+            'btn-warning text-dark shadow-sm': selectedCategoryId === null,
+            'btn-outline-secondary bg-light text-dark': selectedCategoryId !== null
           }"
           (click)="filterByCategory(null)"
         >
-          <i class="bi bi-grid-fill me-1"></i> All Products
+          All Categories
         </button>
 
         <button
-          class="btn btn-sm rounded-pill px-3 py-2 fw-semibold"
+          class="btn btn-sm rounded-1 px-3 py-1.5 fw-semibold"
           *ngFor="let cat of categories"
           [ngClass]="{
-            'btn-primary shadow-sm': selectedCategoryId === cat.categoryId,
-            'btn-outline-secondary bg-white text-dark': selectedCategoryId !== cat.categoryId
+            'btn-warning text-dark shadow-sm': selectedCategoryId === cat.categoryId,
+            'btn-outline-secondary bg-light text-dark': selectedCategoryId !== cat.categoryId
           }"
           (click)="filterByCategory(cat.categoryId)"
         >
@@ -47,12 +47,12 @@
       </div>
     </div>
 
-    <!-- Page Size Selector -->
+    <!-- Items Per Page -->
     <div class="d-flex align-items-center justify-content-end shrink-0">
-      <label for="pageSizeSelect" class="form-label me-2 mb-0 small text-muted fw-semibold">Show:</label>
+      <label for="pageSizeSelect" class="form-label me-2 mb-0 small text-muted fw-semibold">Show per page:</label>
       <select
         id="pageSizeSelect"
-        class="form-select form-select-sm rounded-pill w-auto px-3 bg-white shadow-sm"
+        class="form-select form-select-sm rounded-1 w-auto px-3 bg-white"
         [(ngModel)]="size"
         (change)="onPageSizeChange()"
       >
@@ -64,92 +64,103 @@
 
   <!-- 🔄 Loading Spinner -->
   <div *ngIf="loading" class="text-center my-5 py-5">
-    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
-    <p class="mt-3 text-muted fw-medium">Loading catalog items...</p>
+    <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem;"></div>
+    <p class="mt-3 text-muted fw-medium">Loading deals for you...</p>
   </div>
 
   <!-- ❌ Error Alert -->
-  <div *ngIf="error" class="alert alert-danger rounded-3 shadow-sm">{{ error }}</div>
+  <div *ngIf="error" class="alert alert-danger rounded-2 shadow-sm">{{ error }}</div>
 
-  <!-- 🧺 Modern Product Cards Grid -->
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4" *ngIf="!loading && products.length > 0">
+  <!-- 🧺 AMAZON-STYLE PRODUCT CARDS GRID -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-3 g-3" *ngIf="!loading && products.length > 0">
     <div class="col" *ngFor="let product of products">
-      <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden position-relative product-card bg-white">
+      <div class="card h-100 bg-white border rounded-2 p-3 position-relative amazon-product-card d-flex flex-column justify-content-between">
         
-        <!-- Discount Tag -->
-        <span *ngIf="product.discount" class="position-absolute top-0 start-0 m-3 badge bg-danger text-white rounded-pill px-2.5 py-1 fw-bold shadow-sm z-2">
-          {{ product.discount }}% OFF
-        </span>
+        <!-- Top Badges & Wishlist -->
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <div>
+            <span *ngIf="product.productId === 1 || product.productId === 2" class="badge-best-seller me-1">
+              #1 Best Seller
+            </span>
+            <span *ngIf="product.discount" class="badge-deal">
+              Limited time deal
+            </span>
+          </div>
 
-        <!-- ❤️ Wishlist Floating Button -->
-        <button class="btn btn-sm position-absolute top-0 end-0 m-3 text-danger bg-white rounded-circle shadow-sm z-2 wishlist-btn"
-                (click)="addToWishlist(product.productId)"
-                title="Add to Wishlist">
-          <i class="bi bi-heart-fill"></i>
-        </button>
-    
-        <!-- 📸 Product Image Wrapper -->
-        <div class="product-image-container bg-light d-flex align-items-center justify-content-center p-3 overflow-hidden">
+          <button class="btn btn-sm text-danger p-0 border-0" (click)="addToWishlist(product.productId)" title="Add to Wishlist">
+            <i class="bi bi-heart fs-5"></i>
+          </button>
+        </div>
+
+        <!-- 📸 Product Image -->
+        <div class="product-img-wrapper d-flex align-items-center justify-content-center p-2 mb-3">
           <img [src]="product.productImage || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=60'" 
                [alt]="product.productName"
                loading="lazy"
-               class="product-image img-fluid" />
+               class="product-img img-fluid" />
         </div>
-    
-        <div class="card-body p-4 d-flex flex-col justify-content-between">
-          <div>
-            <div class="d-flex align-items-center gap-1 text-warning small mb-2">
+
+        <!-- Product Details -->
+        <div>
+          <h6 class="fw-bold text-dark mb-1 line-clamp-2" style="font-size: 1.02rem; line-height: 1.35;">
+            {{ product.productName }}
+          </h6>
+          <p class="text-muted small line-clamp-2 mb-2" style="font-size: 0.82rem; min-height: 36px;">
+            {{ product.description }}
+          </p>
+
+          <!-- ⭐ Amazon Rating & Social Proof -->
+          <div class="d-flex align-items-center gap-1 small mb-2">
+            <div class="text-warning small">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-half"></i>
-              <span class="text-muted ms-1 small fw-semibold">4.8 (120+)</span>
             </div>
-            <h5 class="card-title fw-bold text-dark mb-1">{{ product.productName }}</h5>
-            <p class="card-text text-muted small line-clamp-2" style="min-height: 40px">{{ product.description }}</p>
+            <span class="text-primary small fw-semibold">4.8</span>
+            <span class="text-muted small">(2,450+)</span>
           </div>
-    
-          <!-- 💰 Price & Actions -->
-          <div class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center flex-wrap gap-2">
-            <div>
-              <span class="fw-extrabold text-dark fs-5">₹{{ product.specialPrice || product.price }}</span>
-              <span *ngIf="product.specialPrice && product.price > product.specialPrice" class="text-muted text-decoration-line-through small ms-1">
-                ₹{{ product.price }}
-              </span>
-            </div>
+          <div class="text-muted small mb-2" style="font-size: 0.75rem;">2K+ bought in past month</div>
 
-            <div class="d-flex gap-1.5">
-              <button class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1.5 fw-semibold" (click)="addToCart(product.productId)">
-                <i class="bi bi-cart-plus me-1"></i> Add
-              </button>
-              <button class="btn btn-sm btn-primary rounded-pill px-3 py-1.5 fw-semibold" (click)="buyNow(product.productId)">
-                <i class="bi bi-lightning-fill me-1"></i> Buy
-              </button>
-            </div>
+          <!-- 💰 Amazon Deal Pricing -->
+          <div class="d-flex align-items-baseline gap-2 mb-1">
+            <span *ngIf="product.discount" class="text-danger fw-bold fs-5">-{{ product.discount }}%</span>
+            <span class="fw-bold text-dark fs-4" style="letter-spacing: -0.5px;">₹{{ product.specialPrice || product.price }}</span>
           </div>
+
+          <div class="text-muted small mb-2" *ngIf="product.specialPrice && product.price > product.specialPrice">
+            M.R.P.: <span class="text-decoration-line-through">₹{{ product.price }}</span>
+          </div>
+
+          <!-- 🚚 Amazon Prime & Delivery Tag -->
+          <div class="mb-3">
+            <span class="prime-badge"><i class="bi bi-check-lg text-warning fw-bold"></i>prime</span>
+            <span class="small text-dark fw-bold ms-1">FREE One-Day Delivery</span>
+            <div class="text-muted small" style="font-size: 0.75rem;">Get it by <b>Tomorrow, 11:00 AM</b></div>
+          </div>
+        </div>
+
+        <!-- 🛒 Amazon Action Buttons -->
+        <div class="d-flex flex-column gap-2 mt-2 pt-2 border-top">
+          <button class="btn btn-amazon-yellow w-100 py-1.5" (click)="addToCart(product.productId)">
+            <i class="bi bi-cart-plus me-1"></i> Add to Cart
+          </button>
+          <button class="btn btn-amazon-orange w-100 py-1.5" (click)="buyNow(product.productId)">
+            <i class="bi bi-lightning-fill me-1"></i> Buy Now
+          </button>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!-- ℹ️ No Products Empty State -->
-  <div *ngIf="!loading && products.length === 0" class="text-center py-5 my-4 bg-white rounded-4 shadow-sm border p-5">
-    <div class="d-inline-flex p-3 rounded-circle bg-light text-muted mb-3">
-      <i class="bi bi-box-seam fs-1"></i>
-    </div>
-    <h4 class="fw-bold text-dark">No Products Found</h4>
-    <p class="text-muted small">Try switching category tabs or clearing your search filter.</p>
-    <button class="btn btn-outline-primary rounded-pill px-4 mt-2" (click)="filterByCategory(null)">View All Products</button>
-  </div>
-
-  <!-- 📄 Modern Pagination -->
+  <!-- 📄 Pagination -->
   <nav *ngIf="totalPages > 1 && !loading" class="mt-5">
     <ul class="pagination justify-content-center gap-1">
       <li class="page-item" [class.disabled]="page === 0">
-        <button class="page-link rounded-pill px-3" (click)="goToPage(page - 1)">
-          <i class="bi bi-chevron-left me-1"></i> Previous
+        <button class="page-link rounded-1 px-3" (click)="goToPage(page - 1)">
+          « Previous
         </button>
       </li>
 
@@ -158,12 +169,12 @@
         *ngFor="let p of [].constructor(totalPages); let i = index"
         [class.active]="i === page"
       >
-        <button class="page-link rounded-circle mx-1" style="width: 38px; height: 38px;" (click)="goToPage(i)">{{ i + 1 }}</button>
+        <button class="page-link rounded-1 mx-1" (click)="goToPage(i)">{{ i + 1 }}</button>
       </li>
 
       <li class="page-item" [class.disabled]="page === totalPages - 1">
-        <button class="page-link rounded-pill px-3" (click)="goToPage(page + 1)">
-          Next <i class="bi bi-chevron-right ms-1"></i>
+        <button class="page-link rounded-1 px-3" (click)="goToPage(page + 1)">
+          Next »
         </button>
       </li>
     </ul>

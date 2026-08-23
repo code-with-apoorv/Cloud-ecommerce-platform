@@ -1,41 +1,32 @@
-.product-card {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid #f1f5f9;
+.amazon-hero-banner {
+  background: linear-gradient(180deg, rgba(35, 47, 62, 0.95) 0%, rgba(19, 25, 33, 0.95) 100%),
+              url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
+  border-bottom: 2px solid #febd69;
 }
 
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
+.amazon-product-card {
+  border: 1px solid #e7e7e7;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.product-image-container {
-  height: 220px;
-  background-color: #f8fafc;
+.amazon-product-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
 }
 
-.product-image {
-  max-height: 190px;
+.product-img-wrapper {
+  height: 200px;
+  background-color: #ffffff;
+}
+
+.product-img {
+  max-height: 180px;
   object-fit: contain;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
 
-.product-card:hover .product-image {
-  transform: scale(1.08);
-}
-
-.wishlist-btn {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #e2e8f0;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.wishlist-btn:hover {
-  transform: scale(1.15);
-  background-color: #fee2e2 !important;
+.amazon-product-card:hover .product-img {
+  transform: scale(1.05);
 }
 
 .line-clamp-2 {
@@ -46,17 +37,15 @@
 }
 
 .pagination .page-link {
-  color: #475569;
-  border-color: #e2e8f0;
+  color: #007185;
+  border-color: #d5d9d9;
   font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .pagination .page-item.active .page-link {
-  background-color: #4f46e5;
-  border-color: #4f46e5;
-  color: #fff;
+  background-color: #febd69;
+  border-color: #f3a847;
+  color: #111;
   font-weight: 700;
-}
+}
+

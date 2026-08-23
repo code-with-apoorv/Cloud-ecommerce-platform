@@ -1,40 +1,38 @@
 /* ==========================================================================
-   CloudCart — Modern E-Commerce Platform Global Design System
+   CloudCart — Amazon-Inspired Modern E-Commerce Design System
    ========================================================================== */
 
 :root {
   --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Poppins', sans-serif;
   
-  --primary-color: #4f46e5;
-  --primary-hover: #4338ca;
-  --primary-light: #eef2ff;
-  --accent-color: #ec4899;
-  --success-color: #10b981;
-  --warning-color: #f59e0b;
-  --danger-color: #ef4444;
+  --amazon-nav-dark: #131921;
+  --amazon-nav-sub: #232f3e;
+  --amazon-nav-hover: #37475a;
   
-  --bg-surface: #ffffff;
-  --bg-subtle: #f8fafc;
-  --border-color: #e2e8f0;
+  --amazon-yellow: #ffd814;
+  --amazon-yellow-hover: #f7ca00;
+  --amazon-orange: #ffa41c;
+  --amazon-orange-hover: #fa8900;
+  --amazon-search-btn: #febd69;
   
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
-  --shadow-hover: 0 20px 30px -10px rgba(79, 70, 229, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --amazon-deal-red: #cc0c39;
+  --amazon-prime-blue: #007185;
+  --amazon-green: #007600;
+  
+  --bg-page: #eaeded;
+  --bg-white: #ffffff;
+  --border-light: #d5d9d9;
+  
+  --shadow-card: 0 2px 5px 0 rgba(213,217,217,0.5);
+  --shadow-card-hover: 0 6px 16px rgba(0,0,0,0.12);
 }
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--bg-subtle);
-  color: #1e293b;
+  background-color: var(--bg-page);
+  color: #0f1111;
   -webkit-font-smoothing: antialiased;
-}
-
-h1, h2, h3, h4, h5, h6, .card-title, .navbar-brand {
-  font-family: var(--font-heading);
-  letter-spacing: -0.02em;
 }
 
 /* Custom Scrollbar */
@@ -46,69 +44,60 @@ h1, h2, h3, h4, h5, h6, .card-title, .navbar-brand {
   background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #94a3b8;
   border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+
+/* Amazon Buttons */
+.btn-amazon-yellow {
+  background-color: var(--amazon-yellow) !important;
+  border: 1px solid #fcd200 !important;
+  color: #0f1111 !important;
+  border-radius: 20px !important;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(213,217,217,.5);
+  transition: all 0.2s ease;
+}
+.btn-amazon-yellow:hover {
+  background-color: var(--amazon-yellow-hover) !important;
+  border-color: #f2c200 !important;
 }
 
-/* Primary Button Styling */
-.btn-primary {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: #ffffff !important;
+.btn-amazon-orange {
+  background-color: var(--amazon-orange) !important;
+  border: 1px solid #ff8f00 !important;
+  color: #0f1111 !important;
+  border-radius: 20px !important;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(213,217,217,.5);
+  transition: all 0.2s ease;
 }
-.btn-primary:hover, .btn-primary:focus {
-  background-color: var(--primary-hover) !important;
-  border-color: var(--primary-hover) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+.btn-amazon-orange:hover {
+  background-color: var(--amazon-orange-hover) !important;
 }
 
-.btn-outline-primary {
-  color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  font-weight: 600;
-  transition: all 0.25s ease;
-}
-.btn-outline-primary:hover {
-  background-color: var(--primary-color) !important;
-  color: #ffffff !important;
-  transform: translateY(-1px);
+.badge-best-seller {
+  background-color: #e67a00;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
-/* Form Controls */
-.form-control:focus, .form-select:focus {
-  border-color: var(--primary-color) !important;
-  box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.15) !important;
+.badge-deal {
+  background-color: var(--amazon-deal-red);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
-/* Card Transitions */
-.card {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid var(--border-color);
-}
-.card:hover {
-  box-shadow: var(--shadow-hover) !important;
+.prime-badge {
+  color: var(--amazon-prime-blue);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 0.88rem;
 }
 
-/* Badges */
-.badge-soft-primary {
-  background-color: var(--primary-light);
-  color: var(--primary-color);
-  font-weight: 600;
-}
-.badge-soft-success {
-  background-color: #d1fae5;
-  color: #065f46;
-  font-weight: 600;
-}
-.badge-soft-danger {
-  background-color: #fee2e2;
-  color: #991b1b;
-  font-weight: 600;
-}

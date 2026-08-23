@@ -1,0 +1,25 @@
+﻿.amazon-footer {
+  background-color: #232f3e;
+}
+
+.back-to-top {
+  background-color: #37475a;
+  transition: background-color 0.2s ease;
+}
+
+.back-to-top:hover {
+  background-color: #485769;
+}
+
+.amazon-footer-main {
+  background-color: #232f3e;
+}
+
+.amazon-footer-bottom {
+  background-color: #131921;
+}
+
+.footer-hover-link:hover {
+  text-decoration: underline !important;
+  color: #ffffff !important;
+}

@@ -1,55 +1,72 @@
-<footer class="footer-dark bg-dark text-white pt-5 pb-4 mt-5 border-top border-secondary">
-  <div class="container">
-    <div class="row text-center text-md-start mb-4">
+<!-- 📦 AMAZON-STYLE FOOTER -->
+<footer class="amazon-footer text-white mt-5">
+  
+  <!-- ⬆️ Back to top bar -->
+  <a href="#" class="back-to-top d-block text-center py-3 text-white text-decoration-none small fw-semibold">
+    Back to top
+  </a>
 
-      <!-- Brand -->
-      <div class="col-md-3 mb-4">
-        <h5 class="text-white d-flex align-items-center gap-2">
-          <i class="bi bi-cloud-check-fill text-primary fs-4"></i> CloudCart
-        </h5>
-        <p class="text-muted small mt-2">
-          Enterprise cloud-native e-commerce platform built with Spring Boot, Angular, and AWS.
-        </p>
-      </div>
+  <!-- 🏢 Main 4-Column Footer (Tier 1) -->
+  <div class="amazon-footer-main py-5 px-3 px-md-5">
+    <div class="container">
+      <div class="row text-start gy-4">
 
-      <!-- Shop Links -->
-      <div class="col-md-2 mb-4">
-        <h6 class="text-uppercase text-white fw-semibold mb-3 small">Shop</h6>
-        <ul class="list-unstyled small">
-          <li class="mb-2"><a routerLink="/" class="text-muted text-decoration-none hover-white">All Products</a></li>
-          <li class="mb-2"><a routerLink="/wishlist" class="text-muted text-decoration-none hover-white">Wishlist</a></li>
-          <li class="mb-2"><a routerLink="/cart" class="text-muted text-decoration-none hover-white">My Cart</a></li>
-        </ul>
-      </div>
+        <!-- Column 1 -->
+        <div class="col-6 col-md-3">
+          <h6 class="fw-bold mb-3 small text-white">Get to Know Us</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-white-50">
+            <li><a routerLink="/" class="text-white-50 text-decoration-none footer-hover-link">About CloudCart</a></li>
+            <li><a routerLink="/" class="text-white-50 text-decoration-none footer-hover-link">Careers</a></li>
+            <li><a routerLink="/" class="text-white-50 text-decoration-none footer-hover-link">Press Releases</a></li>
+            <li><a routerLink="/" class="text-white-50 text-decoration-none footer-hover-link">CloudCart Science</a></li>
+          </ul>
+        </div>
 
-      <!-- Support -->
-      <div class="col-md-3 mb-4">
-        <h6 class="text-uppercase text-white fw-semibold mb-3 small">Architecture</h6>
-        <ul class="list-unstyled small">
-          <li class="mb-2 text-muted">Spring Boot 3 REST API</li>
-          <li class="mb-2 text-muted">Angular 17 Standalone SPA</li>
-          <li class="mb-2 text-muted">Spring Security 6 + JWT</li>
-          <li class="mb-2 text-muted">AWS Cloud Deployment</li>
-        </ul>
-      </div>
+        <!-- Column 2 -->
+        <div class="col-6 col-md-3">
+          <h6 class="fw-bold mb-3 small text-white">Connect with Us</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-white-50">
+            <li><a href="https://github.com/code-with-apoorv" target="_blank" class="text-white-50 text-decoration-none footer-hover-link"><i class="bi bi-github me-1"></i>GitHub</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none footer-hover-link"><i class="bi bi-linkedin me-1"></i>LinkedIn</a></li>
+            <li><a href="#" class="text-white-50 text-decoration-none footer-hover-link"><i class="bi bi-twitter-x me-1"></i>Twitter</a></li>
+          </ul>
+        </div>
 
-      <!-- Contact / Author -->
-      <div class="col-md-4 mb-4">
-        <h6 class="text-uppercase text-white fw-semibold mb-3 small">Developer</h6>
-        <p class="text-muted small mb-1"><i class="bi bi-person-fill text-primary me-2"></i>Apoorv (&#64;code-with-apoorv)</p>
-        <p class="text-muted small mb-1"><i class="bi bi-github text-primary me-2"></i>github.com/code-with-apoorv</p>
+        <!-- Column 3 -->
+        <div class="col-6 col-md-3">
+          <h6 class="fw-bold mb-3 small text-white">Make Money with Us</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-white-50">
+            <li><a routerLink="/products/manage" class="text-white-50 text-decoration-none footer-hover-link">Sell on CloudCart</a></li>
+            <li><a routerLink="/products/create" class="text-white-50 text-decoration-none footer-hover-link">Supply to CloudCart</a></li>
+            <li><a routerLink="/" class="text-white-50 text-decoration-none footer-hover-link">Become an Affiliate</a></li>
+            <li><a routerLink="/" class="text-white-50 text-decoration-none footer-hover-link">Fulfilment by CloudCart</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="col-6 col-md-3">
+          <h6 class="fw-bold mb-3 small text-white">Let Us Help You</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-white-50">
+            <li><a routerLink="/profile" class="text-white-50 text-decoration-none footer-hover-link">Your Account</a></li>
+            <li><a routerLink="/my-orders" class="text-white-50 text-decoration-none footer-hover-link">Returns Centre</a></li>
+            <li><a routerLink="/" class="text-white-50 text-decoration-none footer-hover-link">100% Purchase Protection</a></li>
+            <li><a routerLink="/" class="text-white-50 text-decoration-none footer-hover-link">Help & FAQs</a></li>
+          </ul>
+        </div>
+
       </div>
     </div>
-
-    <hr class="border-secondary opacity-25">
-
-    <!-- Bottom Bar -->
-    <div class="d-flex justify-content-between align-items-center pt-3 flex-wrap small text-muted">
-      <p class="mb-0">&copy; 2026 CloudCart. Built for Enterprise Cloud Computing & E-Commerce.</p>
-      <div class="d-flex gap-3">
-        <a href="https://github.com/code-with-apoorv/Cloud-ecommerce-platform" class="text-muted hover-white"><i class="bi bi-github fs-5"></i></a>
-      </div>
-    </div>
-
   </div>
+
+  <hr class="m-0 border-secondary opacity-25">
+
+  <!-- 🌐 Bottom Copyright Bar (Tier 2) -->
+  <div class="amazon-footer-bottom py-4 px-3 text-center small text-white-50">
+    <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+      <span class="fs-5 fw-bold text-warning"><i class="bi bi-cloud-check-fill"></i></span>
+      <span class="fw-bold fs-5 text-white">cloud<span class="text-warning">cart</span></span>
+    </div>
+    <p class="mb-0">&copy; 2026 CloudCart, Inc. or its affiliates. Built by Apoorv (&#64;code-with-apoorv).</p>
+  </div>
+
 </footer>
