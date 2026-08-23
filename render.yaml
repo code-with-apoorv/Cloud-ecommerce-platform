@@ -1,0 +1,10 @@
+﻿services:
+  - type: web
+    name: cloud-ecommerce-backend
+    runtime: docker
+    dockerfilePath: ./e-commerce-backend/Dockerfile
+    dockerContext: ./e-commerce-backend
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8080
