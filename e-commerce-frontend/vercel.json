@@ -1,7 +1,4 @@
-﻿{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/e-commerce-frontend/browser",
-  "framework": "angular",
+{
   "rewrites": [
     {
       "source": "/(.*)",
