@@ -1,4 +1,6 @@
 {
+  "framework": "angular",
+  "outputDirectory": "dist/e-commerce-frontend/browser",
   "rewrites": [
     {
       "source": "/(.*)",
